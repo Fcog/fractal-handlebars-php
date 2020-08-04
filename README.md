@@ -42,8 +42,9 @@ Note: components-map.json should be in the same directory of the first argument 
 ## Credits
 
 [rodger](https://github.com/rogden)
+
 [allmarkedup](https://github.com/allmarkedup)
 
 ## More info
 
-(https://github.com/frctl/fractal/issues/190)[https://github.com/frctl/fractal/issues/190]
+[https://github.com/frctl/fractal/issues/190](https://github.com/frctl/fractal/issues/190)
