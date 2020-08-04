@@ -18,20 +18,20 @@ class FractalMapLoader implements Loader {
      */
     private $componentLibPath;
 
-    public function __construct($componentLibPath, $componentMapFileName = 'components-map.json') {
+    public function __construct( $componentLibPath, $componentMapFile ) {
         $this->componentLibPath = $componentLibPath;
-        $this->componentMap = $this->loadMap($componentLibPath . '/' . $componentMapFileName);
+        $this->componentMap = $this->loadMap( $componentMapFile );
     }
 
-    private function loadMap($componentMapFile) {
-        $fileContents = file_get_contents($componentMapFile);
+    private function loadMap( $componentMapFile ) {
+        $fileContents = file_get_contents( $componentMapFile );
 
-        return json_decode($fileContents, true);
+        return json_decode( $fileContents, true );
     }
 
-    public function load($name) {
-        if (isset($this->componentMap[$name])) {
-            return file_get_contents($this->componentLibPath . '/' . $this->componentMap[$name]);
+    public function load( $name ) {
+        if ( isset( $this->componentMap[$name] ) ) {
+            return file_get_contents( $this->componentLibPath . '/' . $this->componentMap[$name] );
         }
 
         throw new \RuntimeException(
