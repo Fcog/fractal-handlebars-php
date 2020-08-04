@@ -16,12 +16,13 @@ class Renderer {
      * Renderer constructor.
      * @param string $component_lib_path The path to the component library project root.
      * @param string $asset_path The absolute path to the assets directory.
+     * @param string $componentMapFileName The absolute path to the components map file.
      */
-    public function __construct( $component_lib_path, $asset_path ) {
+    public function __construct( $component_lib_path, $asset_path, $componentMapFileName = 'components-map.json' ) {
 
         $this->engine = new Handlebars([
             'loader' => new FractalMapLoader( $component_lib_path ),
-            'partials_loader' => new FractalMapLoader( $component_lib_path )
+            'partials_loader' => new FractalMapLoader( $component_lib_path, $componentMapFileName )
         ]);
 
         // add asset path helper
