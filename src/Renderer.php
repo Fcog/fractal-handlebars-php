@@ -2,7 +2,9 @@
 
 namespace FractalHandlebars;
 
+use Handlebars\Context;
 use Handlebars\Handlebars;
+use Handlebars\Template;
 
 /**
  * A template renderer for Handlebars templates created in the Fractal Component
@@ -12,6 +14,8 @@ class Renderer {
 
     private $engine;
 
+	private $asset_path;
+
     /**
      * Renderer constructor.
      * @param string $component_lib_path The path to the component library project root.
@@ -20,13 +24,20 @@ class Renderer {
      */
     public function __construct( $component_lib_path, $asset_path, $componentMapFileName = 'components-map.json' ) {
 
+	    $this->asset_path = $asset_path;
+
         $this->engine = new Handlebars([
             'loader' => new FractalMapLoader( $component_lib_path ),
             'partials_loader' => new FractalMapLoader( $component_lib_path, $componentMapFileName )
         ]);
 
         // add asset path helper
-        $this->engine->addHelper( 'path', new Path_Helper( $asset_path ) );
+        $this->engine->addHelper(
+        	'path',
+	        function( Template $template, Context $context, $args, $source ) {
+	            return $this->asset_path . preg_replace( '/[\'\"]/', '', $args );
+            }
+        );
     }
 
     /**
