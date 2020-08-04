@@ -1,0 +1,23 @@
+{
+    "name": "fcog/fractal-handlebars-php",
+    "description": "Fractal styleguide template loader for PHP and Handlebars",
+    "homepage": "http://www.github.com/fcog/fractal-handlebars-php",
+    "keywords": ["templating", "mustache", "handlebars", "fractal", "styleguide"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fcog",
+            "email": "fcog111@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "salesforce/handlebars-php": "^2.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "FractalHandlebars": "src/"
+        }
+    }
+}
